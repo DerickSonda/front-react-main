@@ -8,8 +8,8 @@
 :root {
   /* Cores (modo claro) */
   --desk: #e3e9f2;            /* fundo atrás da folha */
-  --paper: #fffdf7;           /* folha */
-  --paper-under: #f1eee4;     /* folha de baixo (efeito de bloco) */
+  --paper: #fcfdfe;           /* folha */
+  --paper-under: #eef2f8;     /* folha de baixo (efeito de bloco) */
   --rule: #cbd8ec;            /* pauta azul */
   --margin-line: #e5484d;     /* margem vermelha */
   --ink: #1f2d5c;             /* caneta azul */
@@ -124,18 +124,6 @@ textarea {
   pointer-events: none;
 }
 
-/* furos de fichário na margem */
-.notebook::after {
-  content: '';
-  position: absolute;
-  inset-block: 1.5rem;
-  left: calc(var(--margin) / 2 - 0.4375rem);
-  width: 0.875rem;
-  background: radial-gradient(circle, var(--desk) 0.4375rem, transparent 0.5rem)
-    center top / 0.875rem 6rem repeat-y;
-  pointer-events: none;
-}
-
 .notebook__header {
   padding: 2.25rem 1.5rem 1rem calc(var(--margin) + var(--gutter));
 }
@@ -149,11 +137,6 @@ textarea {
   letter-spacing: -0.01em;
   transform: rotate(-1.5deg);
   transform-origin: left bottom;
-  /* sublinhado de marca-texto atrás do título */
-  background: linear-gradient(var(--highlight), var(--highlight)) 0 85% / 100% 0.45em
-    no-repeat;
-  width: fit-content;
-  padding-inline: 0.125em;
 }
 
 .notebook__summary {
@@ -195,11 +178,6 @@ textarea {
 .button--primary {
   color: var(--paper);
   background: var(--ink);
-  box-shadow: 0 0.1875rem 0 color-mix(in srgb, var(--ink) 55%, var(--desk));
-}
-
-.button--primary:active:not(:disabled) {
-  box-shadow: 0 0.0625rem 0 color-mix(in srgb, var(--ink) 55%, var(--desk));
 }
 
 .button--primary:hover:not(:disabled) {
@@ -310,13 +288,7 @@ textarea {
   min-height: var(--row);
   border-bottom: 1px solid var(--rule);
   animation: task-in 220ms ease-out;
-  transition:
-    opacity 150ms ease,
-    background-color 150ms ease;
-}
-
-.task:hover {
-  background: var(--wash);
+  transition: opacity 150ms ease;
 }
 
 @keyframes task-in {
@@ -361,8 +333,7 @@ textarea {
 }
 
 .checkbox:checked {
-  background: var(--margin-line);
-  border-color: var(--margin-line);
+  background: var(--ink);
 }
 
 .checkbox:checked::before {
